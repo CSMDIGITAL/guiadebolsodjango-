@@ -3,41 +3,160 @@
 <html lang="pt-br">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perfil do Associado</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+<title>Perfil do Associado</title>
+
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+<style>
+
+.perfil-card{
+    background:white;
+    max-width:900px;
+    margin:40px auto;
+    padding:30px;
+    border-radius:10px;
+    box-shadow:0 0 15px rgba(0,0,0,0.1);
+}
+
+.perfil-header{
+    display:flex;
+    align-items:center;
+    gap:20px;
+    border-bottom:1px solid #ddd;
+    padding-bottom:20px;
+    margin-bottom:20px;
+}
+
+.perfil-foto{
+    width:120px;
+    height:120px;
+    border-radius:100%;
+    background:#eaeaea;
+}
+
+.perfil-dados{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:15px;
+}
+
+.perfil-dados div{
+    background:#f5f5f5;
+    padding:10px;
+    border-radius:5px;
+}
+
+.perfil-dados strong{
+    display:block;
+    color:#004a8d;
+}
+
+</style>
+
 </head>
 
 <body>
 
 <header class="topo-principal">
-    <div class="container">
+<div class="container">
 
-        <img src="{% static 'Assets/logo_recortada.png' %}" class="logo">
+<img src="{% static 'Assets/logo_recortada.png' %}" class="logo">
 
-        <nav class="menu">
-            <a href="/">Início</a>
-            <a href="/perfil/">Perfil</a>
-            <a href="#">Benefícios</a>
-            <a href="#">Contato</a>
-        </nav>
+<nav class="menu">
+<a href="/">Início</a>
+<a href="/perfil/">Perfil</a>
+<a href="#">Benefícios</a>
+<a href="#">Contato</a>
+</nav>
 
-    </div>
+</div>
 </header>
 
 <main>
 
-    <h1>Perfil do Associado</h1>
+<div class="perfil-card">
 
-    <p>Aqui será exibido o perfil do associado.</p>
+<div class="perfil-header">
+
+<div class="perfil-foto"></div>
+
+<div>
+<h2>Cássio Soares Misquita</h2>
+<p>Associado SindApp</p>
+</div>
+
+</div>
+
+<div class="perfil-dados">
+
+<div>
+<strong>CPF</strong>
+022.145.821-26
+</div>
+
+<div>
+<strong>RG</strong>
+2683154 – SESP/DF
+</div>
+
+<div>
+<strong>Data de Nascimento</strong>
+29/12/1989
+</div>
+
+<div>
+<strong>Estado Civil</strong>
+Casado
+</div>
+
+<div>
+<strong>Profissão</strong>
+Designer Gráfico
+</div>
+
+<div>
+<strong>Nacionalidade</strong>
+Brasileiro
+</div>
+
+<div>
+<strong>Endereço</strong>
+QR 405 Conjunto D – Samambaia Norte  
+Brasília – DF  
+CEP: 72323-015
+</div>
+
+<div>
+<strong>Situação Fiscal</strong>
+Regular – Receita Federal
+</div>
+
+<div>
+<strong>Situação Eleitoral</strong>
+Quite com a Justiça Eleitoral
+</div>
+
+<div>
+<strong>Formação</strong>
+Ensino Médio – CED 04 Taguatinga
+</div>
+
+<div>
+<strong>Curso Atual</strong>
+Técnico em Inteligência Artificial – SENAC DF
+</div>
+
+</div>
+
+</div>
 
 </main>
 
 <footer>
-    <p>© 2026 SindApp</p>
+<p>© 2026 SindApp</p>
 </footer>
 
 </body>

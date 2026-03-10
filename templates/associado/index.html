@@ -1,36 +1,125 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SindApp</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>SindApp</title>
+
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+<style>
+
+.banner{
+    text-align:center;
+    padding:60px 20px;
+    background:#f4f6f8;
+}
+
+.banner h1{
+    font-size:36px;
+    color:#004a8d;
+}
+
+.banner p{
+    font-size:18px;
+    margin-top:10px;
+}
+
+.cards{
+    max-width:1000px;
+    margin:40px auto;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+}
+
+.card{
+    background:white;
+    padding:25px;
+    border-radius:10px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.08);
+    text-align:center;
+}
+
+.card h3{
+    color:#004a8d;
+}
+
+.card a{
+    display:inline-block;
+    margin-top:10px;
+    text-decoration:none;
+    font-weight:bold;
+    color:#004a8d;
+}
+
+.card a:hover{
+    color:#ffcc00;
+}
+
+</style>
+
 </head>
+
 <body>
 
 <header class="topo-principal">
-    <div class="container">
+<div class="container">
 
-        <img src="{% static 'Assets/logo_recortada.png' %}" class="logo" alt="Logo SindApp">
+<img src="{% static 'Assets/logo_recortada.png' %}" class="logo" alt="Logo SindApp">
 
-        <nav class="menu">
-            <a href="#">Início</a>
-            <a href="#">Associados</a>
-            <a href="#">Benefícios</a>
-            <a href="#">Contato</a>
-        </nav>
+<nav class="menu">
+<a href="/">Início</a>
+<a href="/perfil/">Perfil</a>
+<a href="#">Benefícios</a>
+<a href="#">Contato</a>
+</nav>
 
-    </div>
+</div>
 </header>
 
-<main>
-    <h1>Bem-vindo ao SindApp</h1>
-    <p>Portal do associado.</p>
-</main>
+<!-- Banner -->
+<section class="banner">
+
+<h1>Bem-vindo ao SindApp</h1>
+<p>Sistema de Gestão Sindical para Associados</p>
+
+</section>
+
+<!-- Serviços -->
+<section class="cards">
+
+<div class="card">
+<h3>Perfil</h3>
+<p>Visualize e atualize seus dados de associado.</p>
+<a href="/perfil/">Acessar</a>
+</div>
+
+<div class="card">
+<h3>Benefícios</h3>
+<p>Confira convênios e vantagens exclusivas.</p>
+<a href="#">Ver benefícios</a>
+</div>
+
+<div class="card">
+<h3>Documentos</h3>
+<p>Baixe declarações e documentos do sindicato.</p>
+<a href="#">Acessar</a>
+</div>
+
+<div class="card">
+<h3>Contato</h3>
+<p>Fale diretamente com a equipe do sindicato.</p>
+<a href="#">Entrar em contato</a>
+</div>
+
+</section>
 
 <footer>
-    <p>© 2026 SindApp</p>
+<p>© 2026 SindApp</p>
 </footer>
 
 </body>
