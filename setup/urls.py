@@ -16,7 +16,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from associado.views import index, perfil
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+
+    path('', index, name='index'),
+
+    # rota do perfil
+    path('perfil/', perfil, name='perfil'),
 ]
