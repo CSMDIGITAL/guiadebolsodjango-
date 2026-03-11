@@ -1,0 +1,17 @@
+{% load static %}
+
+<header class="topo-principal">
+    <div class="container nav-wrap">
+
+        <img src="{% static 'Assets/logo_preto_branco.png' %}" class="logo" alt="Logo SindApp">
+
+        <nav class="menu">
+            <a href="{% url 'index' %}"><i class="fa-solid fa-house"></i> Início</a>
+            <a href="{% url 'perfil' %}"><i class="fa-solid fa-user"></i> Perfil</a>
+            <a href="{% url 'carteirinha' %}"><i class="fa-solid fa-id-card"></i> Carteirinha</a>
+            <a href="{% url 'beneficio' %}"><i class="fa-solid fa-gift"></i> Benefícios</a>
+            <a href="{% url 'contato' %}"><i class="fa-solid fa-envelope"></i> Contato</a>
+        </nav>
+
+    </div>
+</header>

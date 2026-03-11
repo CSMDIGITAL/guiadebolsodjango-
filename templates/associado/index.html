@@ -1,126 +1,79 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="pt-BR">
+{% extends 'associado/base.html' %}
 
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% block content %}
 
-<title>SindApp</title>
+<section class="dashboard-hero">
+    <div class="hero-card">
+        <h1>Seu sindicato, agora com cara de plataforma moderna.</h1>
+        <p>
+            Acompanhe perfil, carteirinha, benefícios e serviços em um painel visual,
+            rápido e elegante, pensado para valorizar o associado.
+        </p>
+        <a href="{% url 'carteirinha' %}" class="btn">
+            <i class="fa-solid fa-id-card"></i> Minha carteirinha
+        </a>
+    </div>
 
-<link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <div class="hero-side">
+        <div class="mini-stat">
+            <i class="fa-solid fa-user-check"></i>
+            <h3>Associado ativo</h3>
+            <p>Status atualizado e acesso liberado às áreas do sistema.</p>
+        </div>
 
-<style>
-
-.banner{
-    text-align:center;
-    padding:60px 20px;
-    background:#f4f6f8;
-}
-
-.banner h1{
-    font-size:36px;
-    color:#004a8d;
-}
-
-.banner p{
-    font-size:18px;
-    margin-top:10px;
-}
-
-.cards{
-    max-width:1000px;
-    margin:40px auto;
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:20px;
-}
-
-.card{
-    background:white;
-    padding:25px;
-    border-radius:10px;
-    box-shadow:0 5px 15px rgba(0,0,0,0.08);
-    text-align:center;
-}
-
-.card h3{
-    color:#004a8d;
-}
-
-.card a{
-    display:inline-block;
-    margin-top:10px;
-    text-decoration:none;
-    font-weight:bold;
-    color:#004a8d;
-}
-
-.card a:hover{
-    color:#ffcc00;
-}
-
-</style>
-
-</head>
-
-<body>
-
-<header class="topo-principal">
-<div class="container">
-
-<img src="{% static 'Assets/logo_recortada.png' %}" class="logo" alt="Logo SindApp">
-
-<nav class="menu">
-<a href="/">Início</a>
-<a href="/perfil/">Perfil</a>
-<a href="#">Benefícios</a>
-<a href="#">Contato</a>
-</nav>
-
-</div>
-</header>
-
-<!-- Banner -->
-<section class="banner">
-
-<h1>Bem-vindo ao SindApp</h1>
-<p>Sistema de Gestão Sindical para Associados</p>
-
+        <div class="mini-stat">
+            <i class="fa-solid fa-bolt"></i>
+            <h3>Painel rápido</h3>
+            <p>Atalhos práticos e visual mais profissional para navegação.</p>
+        </div>
+    </div>
 </section>
 
-<!-- Serviços -->
-<section class="cards">
+<section class="quick-grid">
+    <div class="quick-card">
+        <div class="quick-icon"><i class="fa-solid fa-user"></i></div>
+        <h3>Perfil</h3>
+        <p>Consulte seus dados, cadastro e vínculo com o sindicato.</p>
+        <a href="{% url 'perfil' %}" class="quick-link">Abrir perfil →</a>
+    </div>
 
-<div class="card">
-<h3>Perfil</h3>
-<p>Visualize e atualize seus dados de associado.</p>
-<a href="/perfil/">Acessar</a>
-</div>
+    <div class="quick-card">
+        <div class="quick-icon"><i class="fa-solid fa-id-badge"></i></div>
+        <h3>Carteirinha</h3>
+        <p>Tenha sua identificação digital com visual moderno e institucional.</p>
+        <a href="{% url 'carteirinha' %}" class="quick-link">Ver carteirinha →</a>
+    </div>
 
-<div class="card">
-<h3>Benefícios</h3>
-<p>Confira convênios e vantagens exclusivas.</p>
-<a href="#">Ver benefícios</a>
-</div>
+    <div class="quick-card">
+        <div class="quick-icon"><i class="fa-solid fa-gift"></i></div>
+        <h3>Benefícios</h3>
+        <p>Explore convênios, vantagens e oportunidades exclusivas.</p>
+        <a href="{% url 'beneficio' %}" class="quick-link">Conhecer vantagens →</a>
+    </div>
 
-<div class="card">
-<h3>Documentos</h3>
-<p>Baixe declarações e documentos do sindicato.</p>
-<a href="#">Acessar</a>
-</div>
-
-<div class="card">
-<h3>Contato</h3>
-<p>Fale diretamente com a equipe do sindicato.</p>
-<a href="#">Entrar em contato</a>
-</div>
-
+    <div class="quick-card">
+        <div class="quick-icon"><i class="fa-solid fa-headset"></i></div>
+        <h3>Contato</h3>
+        <p>Fale com o sindicato por um canal claro e bem apresentado.</p>
+        <a href="{% url 'contato' %}" class="quick-link">Entrar em contato →</a>
+    </div>
 </section>
 
-<footer>
-<p>© 2026 SindApp</p>
-</footer>
+<section class="painel-infos">
+    <div class="info-box">
+        <h2>Vantagens em destaque</h2>
+        <div class="lista-beneficios">
+            <div class="item-beneficio"><i class="fa-solid fa-heart-pulse"></i><span>Parcerias em saúde e bem-estar</span></div>
+            <div class="item-beneficio"><i class="fa-solid fa-graduation-cap"></i><span>Cursos, capacitação e crescimento profissional</span></div>
+            <div class="item-beneficio"><i class="fa-solid fa-scale-balanced"></i><span>Representação e fortalecimento da categoria</span></div>
+            <div class="item-beneficio"><i class="fa-solid fa-tags"></i><span>Descontos especiais e convênios</span></div>
+        </div>
+    </div>
 
-</body>
-</html>
+    <div class="info-box aviso-box">
+        <h2>Por que esse visual funciona?</h2>
+        <p>Porque transmite organização, tecnologia e confiança. O associado percebe valor logo na primeira tela.</p>
+    </div>
+</section>
+
+{% endblock %}

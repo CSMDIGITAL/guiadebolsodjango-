@@ -1,163 +1,282 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="pt-br">
+{% extends 'associado/base.html' %}
 
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Perfil do Associado</title>
-
-<link rel="stylesheet" href="{% static 'css/style.css' %}">
+{% block content %}
 
 <style>
+    .perfil-dashboard{
+        display:grid;
+        grid-template-columns:320px 1fr;
+        gap:24px;
+    }
 
-.perfil-card{
-    background:white;
-    max-width:900px;
-    margin:40px auto;
-    padding:30px;
-    border-radius:10px;
-    box-shadow:0 0 15px rgba(0,0,0,0.1);
-}
+    .perfil-side,
+    .perfil-main{
+        background:#ffffff;
+        border-radius:24px;
+        box-shadow:0 12px 30px rgba(0,0,0,0.08);
+    }
 
-.perfil-header{
-    display:flex;
-    align-items:center;
-    gap:20px;
-    border-bottom:1px solid #ddd;
-    padding-bottom:20px;
-    margin-bottom:20px;
-}
+    .perfil-side{
+        padding:28px;
+        position:relative;
+        overflow:hidden;
+        background:linear-gradient(180deg, #0d4d8b, #1f78d1);
+        color:white;
+    }
 
-.perfil-foto{
-    width:120px;
-    height:120px;
-    border-radius:100%;
-    background:#eaeaea;
-}
+    .perfil-side::after{
+        content:"";
+        position:absolute;
+        width:180px;
+        height:180px;
+        border-radius:50%;
+        background:rgba(255,255,255,0.08);
+        right:-40px;
+        top:-40px;
+    }
 
-.perfil-dados{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:15px;
-}
+    .perfil-avatar{
+        width:110px;
+        height:110px;
+        border-radius:50%;
+        background:rgba(255,255,255,0.15);
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        font-size:42px;
+        margin-bottom:18px;
+        position:relative;
+        z-index:1;
+    }
 
-.perfil-dados div{
-    background:#f5f5f5;
-    padding:10px;
-    border-radius:5px;
-}
+    .perfil-side h1{
+        font-size:26px;
+        margin-bottom:6px;
+        position:relative;
+        z-index:1;
+    }
 
-.perfil-dados strong{
-    display:block;
-    color:#004a8d;
-}
+    .perfil-side p{
+        opacity:.95;
+        margin-bottom:8px;
+        position:relative;
+        z-index:1;
+    }
 
+    .status-badge{
+        display:inline-block;
+        margin-top:12px;
+        background:#22c55e;
+        color:white;
+        padding:8px 14px;
+        border-radius:999px;
+        font-size:14px;
+        font-weight:bold;
+        position:relative;
+        z-index:1;
+    }
+
+    .perfil-actions{
+        margin-top:24px;
+        display:grid;
+        gap:12px;
+        position:relative;
+        z-index:1;
+    }
+
+    .perfil-actions a{
+        text-decoration:none;
+        background:rgba(255,255,255,0.12);
+        color:white;
+        padding:12px 14px;
+        border-radius:14px;
+        font-weight:bold;
+        transition:.25s ease;
+    }
+
+    .perfil-actions a:hover{
+        background:white;
+        color:#0d4d8b;
+    }
+
+    .perfil-main{
+        padding:28px;
+    }
+
+    .perfil-topo h2{
+        font-size:30px;
+        color:#08345d;
+        margin-bottom:8px;
+    }
+
+    .perfil-topo p{
+        color:#5b6472;
+        margin-bottom:24px;
+    }
+
+    .info-grid{
+        display:grid;
+        grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
+        gap:16px;
+        margin-bottom:24px;
+    }
+
+    .info-card{
+        background:#f8fbff;
+        border:1px solid #e5eef8;
+        border-radius:18px;
+        padding:18px;
+        transition:.25s ease;
+    }
+
+    .info-card:hover{
+        transform:translateY(-4px);
+        box-shadow:0 8px 20px rgba(0,0,0,0.06);
+    }
+
+    .info-card span{
+        display:block;
+        font-size:13px;
+        color:#6b7280;
+        margin-bottom:8px;
+    }
+
+    .info-card strong{
+        color:#08345d;
+        font-size:16px;
+    }
+
+    .painel-extra{
+        display:grid;
+        grid-template-columns:1fr 1fr;
+        gap:18px;
+    }
+
+    .extra-box{
+        background:white;
+        border:1px solid #e8eef7;
+        border-radius:20px;
+        padding:22px;
+        box-shadow:0 8px 20px rgba(0,0,0,0.05);
+    }
+
+    .extra-box h3{
+        color:#08345d;
+        margin-bottom:14px;
+    }
+
+    .extra-box ul{
+        padding-left:18px;
+        color:#4b5563;
+        line-height:1.8;
+    }
+
+    @media (max-width: 950px){
+        .perfil-dashboard{
+            grid-template-columns:1fr;
+        }
+
+        .painel-extra{
+            grid-template-columns:1fr;
+        }
+    }
 </style>
 
-</head>
+<section class="perfil-dashboard">
 
-<body>
+    <aside class="perfil-side">
+        <div class="perfil-avatar">
+            <i class="fa-solid fa-user"></i>
+        </div>
 
-<header class="topo-principal">
-<div class="container">
+        <h1>Cássio Soares Misquita</h1>
+        <p>Associado SindApp</p>
+        <p><i class="fa-solid fa-briefcase"></i> Designer Gráfico</p>
+        <p><i class="fa-solid fa-location-dot"></i> Samambaia Norte, Brasília/DF</p>
 
-<img src="{% static 'Assets/logo_recortada.png' %}" class="logo">
+        <div class="status-badge">
+            <i class="fa-solid fa-circle-check"></i> Cadastro Ativo
+        </div>
 
-<nav class="menu">
-<a href="/">Início</a>
-<a href="/perfil/">Perfil</a>
-<a href="#">Benefícios</a>
-<a href="#">Contato</a>
-</nav>
+        <div class="perfil-actions">
+            <a href="{% url 'carteirinha' %}">
+                <i class="fa-solid fa-id-card"></i> Ver carteirinha
+            </a>
+            <a href="{% url 'beneficio' %}">
+                <i class="fa-solid fa-gift"></i> Meus benefícios
+            </a>
+        </div>
+    </aside>
 
-</div>
-</header>
+    <section class="perfil-main">
+        <div class="perfil-topo">
+            <h2>Painel do Associado</h2>
+            <p>Seus dados apresentados de forma moderna, clara e profissional.</p>
+        </div>
 
-<main>
+        <div class="info-grid">
+            <div class="info-card">
+                <span>Nome completo</span>
+                <strong>Cássio Soares Misquita</strong>
+            </div>
 
-<div class="perfil-card">
+            <div class="info-card">
+                <span>CPF</span>
+                <strong>022.145.821-26</strong>
+            </div>
 
-<div class="perfil-header">
+            <div class="info-card">
+                <span>RG</span>
+                <strong>2683154 – SESP/DF</strong>
+            </div>
 
-<div class="perfil-foto"></div>
+            <div class="info-card">
+                <span>Data de nascimento</span>
+                <strong>29/12/1989</strong>
+            </div>
 
-<div>
-<h2>Cássio Soares Misquita</h2>
-<p>Associado SindApp</p>
-</div>
+            <div class="info-card">
+                <span>Estado civil</span>
+                <strong>Casado</strong>
+            </div>
 
-</div>
+            <div class="info-card">
+                <span>Nacionalidade</span>
+                <strong>Brasileiro</strong>
+            </div>
 
-<div class="perfil-dados">
+            <div class="info-card">
+                <span>Endereço</span>
+                <strong>QR 405 Conjunto D, Samambaia Norte</strong>
+            </div>
 
-<div>
-<strong>CPF</strong>
-022.145.821-26
-</div>
+            <div class="info-card">
+                <span>Curso atual</span>
+                <strong>Técnico em Inteligência Artificial – SENAC DF</strong>
+            </div>
+        </div>
 
-<div>
-<strong>RG</strong>
-2683154 – SESP/DF
-</div>
+        <div class="painel-extra">
+            <div class="extra-box">
+                <h3><i class="fa-solid fa-star"></i> Destaques do associado</h3>
+                <ul>
+                    <li>Cadastro ativo no sistema</li>
+                    <li>Perfil pronto para integração com carteirinha digital</li>
+                    <li>Acesso rápido aos serviços e benefícios</li>
+                </ul>
+            </div>
 
-<div>
-<strong>Data de Nascimento</strong>
-29/12/1989
-</div>
+            <div class="extra-box">
+                <h3><i class="fa-solid fa-bolt"></i> Próximos recursos</h3>
+                <ul>
+                    <li>Atualização de dados online</li>
+                    <li>Download de documentos</li>
+                    <li>Validação com QR Code</li>
+                </ul>
+            </div>
+        </div>
+    </section>
 
-<div>
-<strong>Estado Civil</strong>
-Casado
-</div>
+</section>
 
-<div>
-<strong>Profissão</strong>
-Designer Gráfico
-</div>
-
-<div>
-<strong>Nacionalidade</strong>
-Brasileiro
-</div>
-
-<div>
-<strong>Endereço</strong>
-QR 405 Conjunto D – Samambaia Norte  
-Brasília – DF  
-CEP: 72323-015
-</div>
-
-<div>
-<strong>Situação Fiscal</strong>
-Regular – Receita Federal
-</div>
-
-<div>
-<strong>Situação Eleitoral</strong>
-Quite com a Justiça Eleitoral
-</div>
-
-<div>
-<strong>Formação</strong>
-Ensino Médio – CED 04 Taguatinga
-</div>
-
-<div>
-<strong>Curso Atual</strong>
-Técnico em Inteligência Artificial – SENAC DF
-</div>
-
-</div>
-
-</div>
-
-</main>
-
-<footer>
-<p>© 2026 SindApp</p>
-</footer>
-
-</body>
-</html>
+{% endblock %}

@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SindApp</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+<header class="topo-principal">
+    <div class="container nav-wrap">
+        <img src="{% static 'Assets/logo_preto_branco.png' %}" class="logo" alt="Logo SindApp">
+
+        <nav class="menu">
+            <a href="{% url 'index' %}"><i class="fa-solid fa-house"></i> Início</a>
+            <a href="{% url 'perfil' %}"><i class="fa-solid fa-user"></i> Perfil</a>
+            <a href="{% url 'carteirinha' %}"><i class="fa-solid fa-id-card"></i> Carteirinha</a>
+            <a href="{% url 'beneficio' %}"><i class="fa-solid fa-gift"></i> Benefícios</a>
+            <a href="{% url 'contato' %}"><i class="fa-solid fa-envelope"></i> Contato</a>
+        </nav>
+    </div>
+</header>
+
+<main class="main-area">
+    <div class="container">
+        {% block content %}
+        {% endblock %}
+    </div>
+</main>
+
+<footer class="rodape-sindicato">
+    <div class="container">
+        <p>© 2026 SindApp • Sistema de Gestão Sindical</p>
+        <p>Plataforma digital do associado</p>
+    </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,273 @@
+{% extends 'associado/base.html' %}
+
+{% block content %}
+
+<style>
+    .contato-page{
+        display:grid;
+        gap:32px;
+    }
+
+    .contato-topo{
+        background:#ffffff;
+        border:1px solid #dfe7f1;
+        border-left:6px solid #0d4d8b;
+        border-radius:20px;
+        padding:32px;
+        box-shadow:0 8px 24px rgba(0,0,0,0.06);
+    }
+
+    .contato-topo h1{
+        font-size:34px;
+        color:#08345d;
+        margin-bottom:12px;
+    }
+
+    .contato-topo p{
+        font-size:17px;
+        color:#5b6472;
+        line-height:1.7;
+        max-width:860px;
+    }
+
+    .contato-intro{
+        display:grid;
+        grid-template-columns:1fr 1fr;
+        gap:20px;
+    }
+
+    .intro-card{
+        background:#ffffff;
+        border:1px solid #dfe7f1;
+        border-radius:18px;
+        padding:24px;
+        box-shadow:0 8px 24px rgba(0,0,0,0.05);
+    }
+
+    .intro-card h3{
+        font-size:22px;
+        color:#08345d;
+        margin-bottom:10px;
+    }
+
+    .intro-card p{
+        color:#5b6472;
+        line-height:1.6;
+    }
+
+    .contato-grid{
+        display:grid;
+        grid-template-columns:1.1fr .9fr;
+        gap:22px;
+    }
+
+    .contato-form,
+    .contato-info{
+        background:#ffffff;
+        border:1px solid #dfe7f1;
+        border-radius:20px;
+        padding:28px;
+        box-shadow:0 8px 24px rgba(0,0,0,0.05);
+    }
+
+    .contato-form h2,
+    .contato-info h2{
+        font-size:28px;
+        color:#08345d;
+        margin-bottom:16px;
+    }
+
+    .form-group{
+        margin-bottom:16px;
+    }
+
+    .form-group label{
+        display:block;
+        font-weight:bold;
+        color:#08345d;
+        margin-bottom:8px;
+    }
+
+    .form-group input,
+    .form-group textarea{
+        width:100%;
+        padding:14px 16px;
+        border:1px solid #d6e2ef;
+        border-radius:14px;
+        background:#f8fbff;
+        font-size:15px;
+        outline:none;
+    }
+
+    .form-group textarea{
+        min-height:140px;
+        resize:none;
+    }
+
+    .btn-contato{
+        display:inline-block;
+        border:none;
+        background:#0d4d8b;
+        color:#ffffff;
+        padding:14px 22px;
+        border-radius:14px;
+        font-weight:bold;
+        cursor:pointer;
+        transition:.25s ease;
+    }
+
+    .btn-contato:hover{
+        background:#08345d;
+    }
+
+    .info-list{
+        display:grid;
+        gap:14px;
+        margin-top:10px;
+    }
+
+    .info-item{
+        display:flex;
+        gap:14px;
+        align-items:flex-start;
+        padding:16px;
+        border-radius:16px;
+        background:#f8fbff;
+        border:1px solid #e4eef8;
+    }
+
+    .info-item i{
+        width:42px;
+        height:42px;
+        border-radius:12px;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        background:#eef4fb;
+        color:#0d4d8b;
+        font-size:18px;
+        flex-shrink:0;
+    }
+
+    .info-item strong{
+        display:block;
+        color:#08345d;
+        margin-bottom:4px;
+    }
+
+    .info-item span{
+        color:#5b6472;
+        line-height:1.5;
+    }
+
+    @media (max-width: 900px){
+        .contato-intro,
+        .contato-grid{
+            grid-template-columns:1fr;
+        }
+
+        .contato-topo h1{
+            font-size:28px;
+        }
+    }
+</style>
+
+<section class="contato-page">
+
+    <section class="contato-topo">
+        <h1>Fale Conosco</h1>
+        <p>
+            Este é o canal de contato do SindApp para atendimento, esclarecimento de dúvidas,
+            solicitação de informações e apoio ao associado. Nossa proposta é oferecer uma
+            comunicação clara, acessível e institucional.
+        </p>
+    </section>
+
+    <section class="contato-intro">
+        <div class="intro-card">
+            <h3><i class="fa-solid fa-building-columns"></i> Atendimento institucional</h3>
+            <p>
+                Um canal estruturado para fortalecer o relacionamento com o associado
+                e manter a comunicação com organização e confiança.
+            </p>
+        </div>
+
+        <div class="intro-card">
+            <h3><i class="fa-solid fa-headset"></i> Suporte e orientação</h3>
+            <p>
+                Espaço dedicado para receber mensagens, orientar demandas
+                e ampliar o acesso aos serviços do sindicato.
+            </p>
+        </div>
+    </section>
+
+    <section class="contato-grid">
+
+        <div class="contato-form">
+            <h2>Envie sua mensagem</h2>
+
+            <form>
+                <div class="form-group">
+                    <label for="nome">Nome</label>
+                    <input type="text" id="nome" placeholder="Digite seu nome">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" placeholder="Digite seu e-mail">
+                </div>
+
+                <div class="form-group">
+                    <label for="mensagem">Mensagem</label>
+                    <textarea id="mensagem" placeholder="Escreva sua mensagem"></textarea>
+                </div>
+
+                <button type="submit" class="btn-contato">
+                    <i class="fa-solid fa-paper-plane"></i> Enviar mensagem
+                </button>
+            </form>
+        </div>
+
+        <div class="contato-info">
+            <h2>Informações de atendimento</h2>
+
+            <div class="info-list">
+                <div class="info-item">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <div>
+                        <strong>Endereço</strong>
+                        <span>Brasília/DF • atendimento presencial e institucional</span>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <i class="fa-solid fa-phone"></i>
+                    <div>
+                        <strong>Telefone</strong>
+                        <span>(61) 0000-0000</span>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <i class="fa-solid fa-envelope"></i>
+                    <div>
+                        <strong>E-mail</strong>
+                        <span>contato@sindapp.com.br</span>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <i class="fa-solid fa-clock"></i>
+                    <div>
+                        <strong>Horário de atendimento</strong>
+                        <span>Segunda a sexta, das 8h às 18h</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+</section>
+
+{% endblock %}

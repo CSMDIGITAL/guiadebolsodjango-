@@ -1,0 +1,282 @@
+{% extends 'associado/base.html' %}
+
+{% block content %}
+
+<style>
+    .beneficios-page{
+        display:grid;
+        gap:32px;
+    }
+
+    .beneficios-topo{
+        background:#ffffff;
+        border:1px solid #dfe7f1;
+        border-left:6px solid #0d4d8b;
+        border-radius:20px;
+        padding:32px;
+        box-shadow:0 8px 24px rgba(0,0,0,0.06);
+    }
+
+    .beneficios-topo h1{
+        font-size:34px;
+        color:#08345d;
+        margin-bottom:12px;
+    }
+
+    .beneficios-topo p{
+        font-size:17px;
+        color:#5b6472;
+        line-height:1.7;
+        max-width:850px;
+    }
+
+    .beneficios-intro{
+        display:grid;
+        grid-template-columns:1fr 1fr;
+        gap:20px;
+    }
+
+    .info-institucional{
+        background:#ffffff;
+        border:1px solid #dfe7f1;
+        border-radius:18px;
+        padding:24px;
+        box-shadow:0 8px 24px rgba(0,0,0,0.05);
+    }
+
+    .info-institucional h3{
+        font-size:22px;
+        color:#08345d;
+        margin-bottom:10px;
+    }
+
+    .info-institucional p{
+        color:#5b6472;
+        line-height:1.6;
+    }
+
+    .beneficios-grid{
+        display:grid;
+        grid-template-columns:repeat(3, 1fr);
+        gap:20px;
+    }
+
+    .beneficio-card{
+        background:#ffffff;
+        border:1px solid #dfe7f1;
+        border-radius:18px;
+        padding:24px;
+        box-shadow:0 8px 24px rgba(0,0,0,0.05);
+        transition:.25s ease;
+    }
+
+    .beneficio-card:hover{
+        transform:translateY(-4px);
+        box-shadow:0 12px 28px rgba(0,0,0,0.08);
+    }
+
+    .beneficio-icon{
+        width:56px;
+        height:56px;
+        border-radius:14px;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        background:#eef4fb;
+        color:#0d4d8b;
+        font-size:22px;
+        margin-bottom:16px;
+    }
+
+    .beneficio-card h3{
+        font-size:21px;
+        color:#08345d;
+        margin-bottom:10px;
+    }
+
+    .beneficio-card p{
+        color:#5b6472;
+        line-height:1.6;
+        margin-bottom:14px;
+    }
+
+    .beneficio-tag{
+        display:inline-block;
+        padding:7px 12px;
+        border-radius:999px;
+        border:1px solid #cfe0f2;
+        background:#f7fbff;
+        color:#0d4d8b;
+        font-size:13px;
+        font-weight:bold;
+    }
+
+    .cta-institucional{
+        background:#08345d;
+        color:#ffffff;
+        border-radius:20px;
+        padding:30px;
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+        gap:20px;
+        box-shadow:0 10px 28px rgba(8,52,93,0.20);
+    }
+
+    .cta-institucional h2{
+        font-size:28px;
+        margin-bottom:8px;
+    }
+
+    .cta-institucional p{
+        line-height:1.6;
+        opacity:.95;
+        max-width:760px;
+    }
+
+    .cta-institucional .btn{
+        white-space:nowrap;
+    }
+
+    @media (max-width: 1000px){
+        .beneficios-grid{
+            grid-template-columns:repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width: 800px){
+        .beneficios-intro,
+        .beneficios-grid,
+        .cta-institucional{
+            grid-template-columns:1fr;
+            flex-direction:column;
+            align-items:flex-start;
+        }
+
+        .beneficios-topo h1{
+            font-size:28px;
+        }
+    }
+</style>
+
+<section class="beneficios-page">
+
+    <section class="beneficios-topo">
+        <h1>Benefícios do Associado</h1>
+        <p>
+            O SindApp reúne vantagens e serviços pensados para fortalecer o vínculo com a categoria,
+            ampliar o acesso a oportunidades e oferecer mais suporte ao associado em diferentes áreas.
+        </p>
+    </section>
+
+    <section class="beneficios-intro">
+        <div class="info-institucional">
+            <h3><i class="fa-solid fa-building-columns"></i> Compromisso institucional</h3>
+            <p>
+                Os benefícios apresentados fazem parte de uma proposta de valorização do associado,
+                reforçando a presença do sindicato como apoio, representação e serviço.
+            </p>
+        </div>
+
+        <div class="info-institucional">
+            <h3><i class="fa-solid fa-handshake"></i> Vantagens com propósito</h3>
+            <p>
+                Mais do que descontos, os benefícios representam cuidado, desenvolvimento,
+                proteção e fortalecimento coletivo.
+            </p>
+        </div>
+    </section>
+
+    <section class="beneficios-grid">
+
+        <div class="beneficio-card">
+            <div class="beneficio-icon">
+                <i class="fa-solid fa-heart-pulse"></i>
+            </div>
+            <h3>Saúde e Bem-Estar</h3>
+            <p>
+                Parcerias com clínicas, atendimento e serviços voltados à qualidade de vida
+                do associado e de sua família.
+            </p>
+            <span class="beneficio-tag">Cuidado e prevenção</span>
+        </div>
+
+        <div class="beneficio-card">
+            <div class="beneficio-icon">
+                <i class="fa-solid fa-graduation-cap"></i>
+            </div>
+            <h3>Educação e Capacitação</h3>
+            <p>
+                Acesso a cursos, formações e oportunidades que contribuem para o crescimento
+                profissional e atualização constante.
+            </p>
+            <span class="beneficio-tag">Desenvolvimento profissional</span>
+        </div>
+
+        <div class="beneficio-card">
+            <div class="beneficio-icon">
+                <i class="fa-solid fa-scale-balanced"></i>
+            </div>
+            <h3>Representação Sindical</h3>
+            <p>
+                Apoio institucional, defesa de direitos e fortalecimento coletivo
+                das pautas da categoria.
+            </p>
+            <span class="beneficio-tag">Representação e voz ativa</span>
+        </div>
+
+        <div class="beneficio-card">
+            <div class="beneficio-icon">
+                <i class="fa-solid fa-tags"></i>
+            </div>
+            <h3>Convênios e Descontos</h3>
+            <p>
+                Vantagens em parceiros, serviços e estabelecimentos que geram economia
+                e praticidade ao associado.
+            </p>
+            <span class="beneficio-tag">Economia no dia a dia</span>
+        </div>
+
+        <div class="beneficio-card">
+            <div class="beneficio-icon">
+                <i class="fa-solid fa-file-shield"></i>
+            </div>
+            <h3>Suporte e Orientação</h3>
+            <p>
+                Canais de atendimento e apoio para temas importantes,
+                com orientação clara e acessível.
+            </p>
+            <span class="beneficio-tag">Segurança e apoio</span>
+        </div>
+
+        <div class="beneficio-card">
+            <div class="beneficio-icon">
+                <i class="fa-solid fa-id-card"></i>
+            </div>
+            <h3>Carteirinha Digital</h3>
+            <p>
+                Identificação moderna e institucional, preparada para valorizar
+                o associado em ambiente físico e digital.
+            </p>
+            <span class="beneficio-tag">Identificação oficial</span>
+        </div>
+
+    </section>
+
+    <section class="cta-institucional">
+        <div>
+            <h2>Associe-se e tenha acesso a uma estrutura de apoio e vantagens.</h2>
+            <p>
+                O conjunto de benefícios fortalece o vínculo com o sindicato e amplia
+                o acesso a serviços, representação e oportunidades relevantes.
+            </p>
+        </div>
+
+        <a href="{% url 'carteirinha' %}" class="btn">
+            <i class="fa-solid fa-arrow-right"></i> Ver carteirinha
+        </a>
+    </section>
+
+</section>
+
+{% endblock %}
