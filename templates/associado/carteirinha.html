@@ -5,39 +5,53 @@
 <style>
     .carteirinha-layout{
         display:grid;
-        grid-template-columns:1fr 420px;
-        gap:24px;
+        grid-template-columns:1fr 460px;
+        gap:28px;
         align-items:start;
     }
 
     .carteirinha-info{
         background:#ffffff;
         border-radius:24px;
-        padding:28px;
+        padding:30px;
         box-shadow:0 12px 30px rgba(0,0,0,0.08);
+        border:1px solid #e6edf5;
     }
 
     .carteirinha-info h2{
-        font-size:32px;
+        font-size:34px;
         color:#08345d;
-        margin-bottom:10px;
+        margin-bottom:12px;
     }
 
     .carteirinha-info p{
         color:#5b6472;
         line-height:1.7;
         margin-bottom:18px;
+        max-width:720px;
+    }
+
+    .selo-status{
+        margin:18px 0 22px;
+        display:inline-flex;
+        align-items:center;
+        gap:8px;
+        background:#eaf8ef;
+        color:#118847;
+        padding:10px 14px;
+        border-radius:999px;
+        font-weight:bold;
+        font-size:14px;
     }
 
     .vantagens-lista{
         display:grid;
         gap:14px;
-        margin-top:18px;
     }
 
     .vantagem-item{
         display:flex;
-        align-items:center;
+        align-items:flex-start;
         gap:14px;
         padding:16px 18px;
         border-radius:16px;
@@ -55,22 +69,59 @@
         background:linear-gradient(135deg, #e7f2ff, #d8ebff);
         color:#0d4d8b;
         font-size:18px;
+        flex-shrink:0;
     }
 
-    .card-premium{
+    .card-area{
+        display:grid;
+        gap:14px;
+        justify-items:center;
+    }
+
+    .card-tip{
+        color:#5b6472;
+        font-size:14px;
+        text-align:center;
+    }
+
+    .flip-card{
+        width:100%;
+        max-width:460px;
+        height:290px;
+        perspective:1200px;
+        cursor:pointer;
+    }
+
+    .flip-card-inner{
         position:relative;
-        overflow:hidden;
-        min-height:270px;
+        width:100%;
+        height:100%;
+        transition:transform .8s ease;
+        transform-style:preserve-3d;
+    }
+
+    .flip-card.is-flipped .flip-card-inner{
+        transform:rotateY(180deg);
+    }
+
+    .flip-face{
+        position:absolute;
+        inset:0;
+        backface-visibility:hidden;
         border-radius:28px;
-        padding:28px;
-        color:#fff;
-        background:
-            radial-gradient(circle at top right, rgba(255,255,255,0.16), transparent 28%),
-            linear-gradient(135deg, #082e54, #0d4d8b, #2b8de0);
+        overflow:hidden;
         box-shadow:0 24px 45px rgba(13,77,139,0.28);
     }
 
-    .card-premium::before{
+    .card-front{
+        color:#fff;
+        padding:28px;
+        background:
+            radial-gradient(circle at top right, rgba(255,255,255,0.16), transparent 28%),
+            linear-gradient(135deg, #082e54, #0d4d8b, #2b8de0);
+    }
+
+    .card-front::before{
         content:"";
         position:absolute;
         width:220px;
@@ -81,13 +132,23 @@
         top:-70px;
     }
 
+    .card-back{
+        transform:rotateY(180deg);
+        background:linear-gradient(135deg, #0b2542, #103b67);
+        color:#fff;
+        padding:28px;
+        display:flex;
+        flex-direction:column;
+        justify-content:space-between;
+    }
+
     .card-topo{
+        position:relative;
+        z-index:1;
         display:flex;
         justify-content:space-between;
         align-items:flex-start;
-        margin-bottom:26px;
-        position:relative;
-        z-index:1;
+        margin-bottom:28px;
     }
 
     .card-topo small{
@@ -101,7 +162,7 @@
 
     .card-topo h3{
         font-size:26px;
-        line-height:1.2;
+        line-height:1.15;
     }
 
     .chip{
@@ -115,7 +176,7 @@
     .titular{
         position:relative;
         z-index:1;
-        margin-bottom:26px;
+        margin-bottom:28px;
     }
 
     .titular span{
@@ -156,32 +217,59 @@
         letter-spacing:2px;
     }
 
-    .qr-box{
-        width:88px;
-        height:88px;
-        border-radius:14px;
-        background:
-            linear-gradient(90deg,#ffffff 10px,transparent 10px) 0 0/20px 20px,
-            linear-gradient(#ffffff 10px,transparent 10px) 0 0/20px 20px,
-            #cfe5ff;
-        border:6px solid rgba(255,255,255,0.95);
-        flex-shrink:0;
+    .validade{
+        margin-top:8px;
+        font-size:13px;
+        opacity:.9;
     }
 
-    .selo-status{
-        margin-top:18px;
-        display:inline-flex;
-        align-items:center;
-        gap:8px;
-        background:#eaf8ef;
-        color:#118847;
-        padding:10px 14px;
-        border-radius:999px;
-        font-weight:bold;
+    .back-header h3{
+        font-size:24px;
+        margin-bottom:8px;
+    }
+
+    .back-header p{
         font-size:14px;
+        opacity:.9;
+        line-height:1.5;
     }
 
-    @media (max-width: 950px){
+    .qr-real{
+        width:150px;
+        height:150px;
+        margin:18px auto;
+        background:#fff;
+        border-radius:14px;
+        padding:10px;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+    }
+
+    .qr-real img{
+        width:100%;
+        height:100%;
+        object-fit:contain;
+        display:block;
+    }
+
+    .back-footer{
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+        gap:12px;
+        font-size:13px;
+        opacity:.9;
+    }
+
+    .back-chip{
+        padding:8px 12px;
+        border-radius:999px;
+        background:rgba(255,255,255,0.12);
+        font-weight:bold;
+    }
+
+    @media (max-width: 980px){
         .carteirinha-layout{
             grid-template-columns:1fr;
         }
@@ -191,69 +279,104 @@
 <section class="carteirinha-layout">
 
     <div class="carteirinha-info">
-        <h2>Carteirinha Digital Premium</h2>
+        <h2>Carteirinha Digital Interativa</h2>
         <p>
-            Esta é a identidade visual do associado dentro do SindApp. Com visual moderno,
-            forte e profissional, ela valoriza o vínculo com o sindicato e transmite mais
-            credibilidade na apresentação.
+            Aqui a carteirinha deixa de ser apenas visual e passa a ser uma experiência.
+            Ao clicar, ela vira e exibe o QR Code de validação, reforçando modernidade,
+            praticidade e identidade institucional.
         </p>
 
         <div class="selo-status">
             <i class="fa-solid fa-circle-check"></i>
-            Carteirinha ativa
+            Carteirinha ativa e pronta para validação
         </div>
 
         <div class="vantagens-lista">
             <div class="vantagem-item">
                 <i class="fa-solid fa-id-card"></i>
                 <div>
-                    <strong>Identificação imediata</strong><br>
-                    Apresentação rápida e elegante do associado.
+                    <strong>Apresentação premium</strong><br>
+                    Visual forte e mais profissional para o associado.
+                </div>
+            </div>
+
+            <div class="vantagem-item">
+                <i class="fa-solid fa-rotate"></i>
+                <div>
+                    <strong>Interação ao clique</strong><br>
+                    A carteirinha gira e revela o QR Code de autenticação.
                 </div>
             </div>
 
             <div class="vantagem-item">
                 <i class="fa-solid fa-qrcode"></i>
                 <div>
-                    <strong>Pronta para QR Code</strong><br>
-                    Estrutura ideal para validação digital futura.
-                </div>
-            </div>
-
-            <div class="vantagem-item">
-                <i class="fa-solid fa-shield-heart"></i>
-                <div>
-                    <strong>Valor institucional</strong><br>
-                    Reforça pertencimento e confiança na marca sindical.
+                    <strong>Validação digital</strong><br>
+                    Ideal para leitura rápida e comprovação de vínculo.
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="card-premium">
-        <div class="card-topo">
-            <div>
-                <small>SindApp</small>
-                <h3>Carteirinha<br>do Associado</h3>
+    <div class="card-area">
+        <div class="flip-card" id="carteirinhaFlip">
+            <div class="flip-card-inner">
+
+                <div class="flip-face card-front">
+                    <div class="card-topo">
+                        <div>
+                            <small>SindApp</small>
+                            <h3>Carteirinha<br>do Associado</h3>
+                        </div>
+                        <div class="chip"></div>
+                    </div>
+
+                    <div class="titular">
+                        <span>Titular</span>
+                        <strong>Cássio S. Misquita</strong>
+                    </div>
+
+                    <div class="card-rodape">
+                        <div class="codigo-box">
+                            <span>Matrícula</span>
+                            <div class="codigo">SA-2026-001</div>
+                            <div class="validade">Validade: 12/2026</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flip-face card-back">
+                    <div class="back-header">
+                        <h3>Validação digital</h3>
+                        <p>Apresente este QR Code para identificação rápida do associado.</p>
+                    </div>
+
+                    <div class="qr-real">
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=SindApp-SA-2026-001-Cassio-Soares-Misquita" alt="QR Code da carteirinha">
+                    </div>
+
+                    <div class="back-footer">
+                        <span>Associado ativo</span>
+                        <span class="back-chip">SindApp</span>
+                    </div>
+                </div>
+
             </div>
-            <div class="chip"></div>
         </div>
 
-        <div class="titular">
-            <span>Titular</span>
-            <strong>Cássio S. Misquita</strong>
-        </div>
-
-        <div class="card-rodape">
-            <div class="codigo-box">
-                <span>Matrícula</span>
-                <div class="codigo">SA-2026-001</div>
-            </div>
-
-            <div class="qr-box"></div>
-        </div>
+        <p class="card-tip">
+            <i class="fa-solid fa-hand-pointer"></i>
+            Clique na carteirinha para virar e visualizar o QR Code.
+        </p>
     </div>
 
 </section>
+
+<script>
+    const card = document.getElementById('carteirinhaFlip');
+    card.addEventListener('click', function () {
+        card.classList.toggle('is-flipped');
+    });
+</script>
 
 {% endblock %}

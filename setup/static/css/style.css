@@ -1,46 +1,86 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
+.hero-badge{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    background:rgba(255,255,255,0.14);
+    color:#fff;
+    padding:8px 14px;
+    border-radius:999px;
+    font-size:14px;
+    font-weight:bold;
+    margin-bottom:18px;
 }
 
-.topo-principal {
-    background-color: #004a8d;
-    padding: 15px 0;
-    color: white;
+.hero-actions{
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+    margin-top:18px;
 }
 
-.container {
-    max-width: 1000px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.btn-secondary{
+    display:inline-block;
+    background:#ffffff;
+    color:#0d4d8b;
+    text-decoration:none;
+    padding:12px 18px;
+    border-radius:14px;
+    font-weight:bold;
+    transition:.25s ease;
 }
 
-.logo {
-    height: 50px;
+.btn-secondary:hover{
+    background:#ffcc00;
+    color:#111;
 }
 
-.menu a {
-    color: white;
-    text-decoration: none;
-    margin-left: 20px;
-    font-weight: bold;
+.mini-stat.destaque{
+    border-left:5px solid #0d4d8b;
 }
 
-.menu a:hover {
-    color: #ffcc00;
+.home-chamada{
+    margin-bottom:28px;
 }
 
-main {
-    padding: 40px;
+.chamada-box{
+    background:#ffffff;
+    border:1px solid var(--borda);
+    border-left:6px solid #0d4d8b;
+    border-radius:20px;
+    padding:24px;
+    box-shadow:0 10px 24px rgba(0,0,0,0.06);
 }
 
-footer {
-    text-align: center;
-    padding: 20px;
-    background-color: #f2f2f2;
-    margin-top: 40px;
+.chamada-box h2{
+    color:var(--azul-escuro);
+    margin-bottom:10px;
+    font-size:28px;
+}
+
+.chamada-box p{
+    color:var(--texto-suave);
+    line-height:1.6;
+}
+
+.cta-final{
+    margin-top:30px;
+}
+
+.cta-final-box{
+    background:linear-gradient(135deg,#08345d,#0d4d8b);
+    color:#fff;
+    border-radius:22px;
+    padding:32px;
+    box-shadow:0 18px 36px rgba(13,77,139,0.22);
+}
+
+.cta-final-box h2{
+    font-size:30px;
+    margin-bottom:12px;
+}
+
+.cta-final-box p{
+    max-width:760px;
+    line-height:1.6;
+    margin-bottom:18px;
 }
