@@ -221,6 +221,116 @@
         font-weight:bold;
     }
 
+    .new-members-panel{
+        background:#fff;
+        border:1px solid #e3ebf5;
+        border-radius:24px;
+        padding:24px;
+        box-shadow:0 10px 24px rgba(0,0,0,0.06);
+    }
+
+    .new-members-grid{
+        display:grid;
+        grid-template-columns:repeat(4, 1fr);
+        gap:18px;
+        margin-top:18px;
+    }
+
+    .member-card{
+        background:#f8fbff;
+        border:1px solid #e4eef8;
+        border-radius:20px;
+        padding:18px;
+        transition:.25s ease;
+    }
+
+    .member-card:hover{
+        transform:translateY(-4px);
+        box-shadow:0 16px 28px rgba(0,0,0,0.08);
+    }
+
+    .member-top{
+        display:flex;
+        align-items:center;
+        gap:12px;
+        margin-bottom:14px;
+    }
+
+    .member-avatar{
+        width:52px;
+        height:52px;
+        border-radius:50%;
+        background:linear-gradient(135deg, #0d4d8b, #1f78d1);
+        color:#fff;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        font-weight:bold;
+        font-size:20px;
+        flex-shrink:0;
+    }
+
+    .member-info h3{
+        font-size:18px;
+        color:#08345d;
+        margin-bottom:4px;
+    }
+
+    .member-info p{
+        font-size:14px;
+        color:#5b6472;
+    }
+
+    .member-tags{
+        display:flex;
+        flex-wrap:wrap;
+        gap:8px;
+        margin:12px 0;
+    }
+
+    .member-tag{
+        display:inline-flex;
+        align-items:center;
+        gap:6px;
+        background:#eaf3ff;
+        color:#0d4d8b;
+        border-radius:999px;
+        padding:8px 12px;
+        font-size:12px;
+        font-weight:bold;
+    }
+
+    .member-meta{
+        display:grid;
+        gap:8px;
+        margin:12px 0 16px;
+        font-size:14px;
+        color:#4b5563;
+    }
+
+    .member-meta span{
+        display:flex;
+        align-items:center;
+        gap:8px;
+    }
+
+    .member-action{
+        display:inline-flex;
+        align-items:center;
+        gap:8px;
+        text-decoration:none;
+        background:#0d4d8b;
+        color:#fff;
+        padding:10px 14px;
+        border-radius:12px;
+        font-size:14px;
+        font-weight:bold;
+    }
+
+    .member-action:hover{
+        background:#08345d;
+    }
+
     .bottom-grid{
         display:grid;
         grid-template-columns:1.2fr .8fr;
@@ -273,7 +383,8 @@
 
     @media (max-width: 1100px){
         .metrics-grid,
-        .services-grid{
+        .services-grid,
+        .new-members-grid{
             grid-template-columns:repeat(2, 1fr);
         }
 
@@ -285,12 +396,21 @@
 
     @media (max-width: 700px){
         .metrics-grid,
-        .services-grid{
+        .services-grid,
+        .new-members-grid{
             grid-template-columns:1fr;
+        }
+
+        .hero-dashboard{
+            padding:24px;
         }
 
         .hero-dashboard h1{
             font-size:30px;
+        }
+
+        .hero-dashboard p{
+            font-size:16px;
         }
 
         .section-head{
@@ -362,6 +482,113 @@
             <div class="icon"><i class="fa-solid fa-headset"></i></div>
             <h3>418</h3>
             <p>Atendimentos realizados no último mês.</p>
+        </div>
+    </section>
+
+    <section class="new-members-panel">
+        <div class="section-head">
+            <div>
+                <h2>Novos associados</h2>
+                <p>Painel com os últimos associados cadastrados, facilitando o acompanhamento de novas entradas na base sindical.</p>
+            </div>
+        </div>
+
+        <div class="new-members-grid">
+            <div class="member-card">
+                <div class="member-top">
+                    <div class="member-avatar">A</div>
+                    <div class="member-info">
+                        <h3>Ana Paula Martins</h3>
+                        <p>Matrícula nº 202601</p>
+                    </div>
+                </div>
+
+                <div class="member-tags">
+                    <span class="member-tag"><i class="fa-solid fa-circle-check"></i> Ativo</span>
+                    <span class="member-tag"><i class="fa-solid fa-id-card"></i> Carteirinha gerada</span>
+                </div>
+
+                <div class="member-meta">
+                    <span><i class="fa-solid fa-calendar-days"></i> Entrada: 10/03/2026</span>
+                    <span><i class="fa-solid fa-briefcase"></i> Setor: Administrativo</span>
+                </div>
+
+                <a href="{% url 'perfil' %}" class="member-action">
+                    <i class="fa-solid fa-user"></i> Ver perfil
+                </a>
+            </div>
+
+            <div class="member-card">
+                <div class="member-top">
+                    <div class="member-avatar">R</div>
+                    <div class="member-info">
+                        <h3>Rafael Souza Lima</h3>
+                        <p>Matrícula nº 202602</p>
+                    </div>
+                </div>
+
+                <div class="member-tags">
+                    <span class="member-tag"><i class="fa-solid fa-circle-check"></i> Ativo</span>
+                    <span class="member-tag"><i class="fa-solid fa-file-lines"></i> Cadastro validado</span>
+                </div>
+
+                <div class="member-meta">
+                    <span><i class="fa-solid fa-calendar-days"></i> Entrada: 11/03/2026</span>
+                    <span><i class="fa-solid fa-briefcase"></i> Setor: Operacional</span>
+                </div>
+
+                <a href="{% url 'perfil' %}" class="member-action">
+                    <i class="fa-solid fa-user"></i> Ver perfil
+                </a>
+            </div>
+
+            <div class="member-card">
+                <div class="member-top">
+                    <div class="member-avatar">C</div>
+                    <div class="member-info">
+                        <h3>Carla Mendes Rocha</h3>
+                        <p>Matrícula nº 202603</p>
+                    </div>
+                </div>
+
+                <div class="member-tags">
+                    <span class="member-tag"><i class="fa-solid fa-circle-check"></i> Ativo</span>
+                    <span class="member-tag"><i class="fa-solid fa-envelope"></i> Contato atualizado</span>
+                </div>
+
+                <div class="member-meta">
+                    <span><i class="fa-solid fa-calendar-days"></i> Entrada: 12/03/2026</span>
+                    <span><i class="fa-solid fa-briefcase"></i> Setor: Financeiro</span>
+                </div>
+
+                <a href="{% url 'perfil' %}" class="member-action">
+                    <i class="fa-solid fa-user"></i> Ver perfil
+                </a>
+            </div>
+
+            <div class="member-card">
+                <div class="member-top">
+                    <div class="member-avatar">J</div>
+                    <div class="member-info">
+                        <h3>João Victor Alves</h3>
+                        <p>Matrícula nº 202604</p>
+                    </div>
+                </div>
+
+                <div class="member-tags">
+                    <span class="member-tag"><i class="fa-solid fa-circle-check"></i> Ativo</span>
+                    <span class="member-tag"><i class="fa-solid fa-shield"></i> Documentação ok</span>
+                </div>
+
+                <div class="member-meta">
+                    <span><i class="fa-solid fa-calendar-days"></i> Entrada: 13/03/2026</span>
+                    <span><i class="fa-solid fa-briefcase"></i> Setor: Comercial</span>
+                </div>
+
+                <a href="{% url 'perfil' %}" class="member-action">
+                    <i class="fa-solid fa-user"></i> Ver perfil
+                </a>
+            </div>
         </div>
     </section>
 

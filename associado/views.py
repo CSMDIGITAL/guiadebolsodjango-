@@ -4,7 +4,12 @@ def index(request):
     return render(request, 'associado/index.html')
 
 def perfil(request):
-    return render(request, 'associado/perfil.html')
+    associado = {
+        'id': '001',
+        'nome': 'Cassio',
+        'status': 'Ativo'
+    }
+    return render(request, 'associado/perfil.html', {'associado': associado})
 
 def carteirinha(request):
     return render(request, 'associado/carteirinha.html')
