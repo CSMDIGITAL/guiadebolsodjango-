@@ -16,13 +16,21 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from associado.views import index, perfil, carteirinha, beneficio, contato
+from django.conf import settings
+from django.conf.urls.static import static
+from associado import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', index, name='index'),
-    path('perfil/', perfil, name='perfil'),
-    path('carteirinha/', carteirinha, name='carteirinha'),
-    path('beneficio/', beneficio, name='beneficio'),
-    path('contato/', contato, name='contato'),
-]
+    path('', views.dashboard, name='index'),
+    path('dashboard/', views.dashboard, name='dashboard'),
+    path('perfil/', views.perfil, name='perfil'),
+    path('carteirinha/', views.carteirinha, name='carteirinha'),
+    path('beneficio/', views.beneficio, name='beneficio'),
+    path('contato/', views.contato, name='contato'),
+    path('associados/', views.lista_associados, name='lista_associados'),
+    path('associados/novo/', views.criar_associado, name='criar_associado'),
+    path('associados/<int:id>/editar/', views.editar_associado, name='editar_associado'),
+    path('associados/<int:id>/carteirinha/', views.carteirinha_associado, name='carteirinha_associado'),
+    path('validar/<int:id>/', views.validar_associado, name='validar_associado'),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
